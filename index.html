@@ -38,12 +38,12 @@
           </select>
         </form>
       </div>
-      <div class="grid grid-cols-8 gap-3">
+      <div class="grid grid-cols-9 gap-3">
 
         <div class="col-span-1">
           <div class="px-4 sm:px-6 lg:px-8 col-span-1">
             <div class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-300">
+              <table class="min-w-full divide-y divide-gray-300 text-lg">
                 <thead class="bg-gray-50">
                   <tr>
                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Team</th>
@@ -82,9 +82,9 @@
             </div>
           </div>
       </div>
-      <div class="col-span-6" id="myPlot" style="width: 75%; background-color: #d3d3d3"></div>
+      <div class="col-span-6" id="myPlot" style="width: 75%;"></div>
 
-      <div class="col-span-1 mt-10 flex flex-col gap-10 text-xl font-black font-mono">
+      <div class="col-span-2 mr-20 mt-10 flex flex-col gap-10 text-xl font-black font-mono text-wrap">
         <div>
           <label class="" id="playerName"> </label>
         </div>
@@ -136,6 +136,60 @@
         <label id="team"> </label>
         <label class="ml-3" id="totalPrice"> </label>
       </div>
+    </div>
+      <div class="flex items-center ml-5 mt-2 flex gap-3">
+        
+        <button
+          type="button"
+          onclick="hustlersBid()"
+          class="rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Hustlers
+        </button>
+
+        <button
+          type="button"
+          onclick="stallionsBid()"
+          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Stallions
+        </button>
+
+        <button
+          type="button"
+          onclick="thundersBid()"
+          class="rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Thunders
+        </button>
+
+        <button
+          type="button"
+          onclick="falconsBid()"
+          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Falcons
+        </button>
+
+        <button
+          type="button"
+          onclick="warriorsBid()"
+          class="rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Warriors
+        </button>
+
+        <button
+          type="button"
+          onclick="panthorsBid()"
+          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Panthors
+        </button>
+      </div>
+
+    <div>
+
     </div>
 
     <footer class="bg-gray-300 absolute inset-x-0 bottom-0">
@@ -240,6 +294,98 @@
       fillTable();
     }
 
+    function hustlersBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[0] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[0] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    function stallionsBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[1] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[1] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    function thundersBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[2] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[2] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    function falconsBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[3] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[3] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    function warriorsBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[4] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[4] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    function panthorsBid() {
+      if (totalPrice < biddingChangeAmount) {
+        totalPrice = totalPrice + increaseLevelOne;
+        data[0].x[5] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else {
+        totalPrice = totalPrice + increaseLevelTwo;
+        data[0].x[5] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      }
+      showTotalPrice();
+      showTeamName();
+      fillTable();
+    }
+
+    
+
     function checkname(name) {
       return name == teamName;
     }
@@ -271,7 +417,7 @@
 
     function showTotalPrice() {
       document.getElementById("totalPrice").innerHTML =
-        "Current Bid :  <b style='color:red;'>" + totalPrice + "</b>";
+        "Current Bid :  <b style='color:red;'>" + totalPrice + " LKR</b>";
     }
 
     function showTeamName() {
