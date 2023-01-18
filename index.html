@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <body>
+    <div class="class-01 flex flex-col items-center gap-5">
+      <div id="myPlot" style="width: 75%"></div>
+
+      <div class="flex items-center ml-5 mt-2 flex gap-3">
+        <button
+          type="button"
+          onclick="reset()"
+          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Reset
+        </button>
+        <div className="ml-2">
+          <form name="formid">
+            <select
+              class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              id="teams"
+              name="ddlselect"
+              onChange="getUser()"
+            >
+              <option value="">Choose a team</option>
+              <option value="Hustlers">Hustlers</option>
+              <option value="Stallions">Stallions</option>
+              <option value="Thunders">Thunders</option>
+              <option value="Falcons">Falcons</option>
+              <option value="Warriors">Warriors</option>
+              <option value="Panthers">Panthers</option>
+            </select>
+          </form>
+        </div>
+        <button
+          type="button"
+          onclick="changePrice()"
+          class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Bid
+        </button>
+      </div>
+      <div class="text-lg">
+        <label id="team"> </label>
+        <label class="ml-3" id="totalPrice"> </label>
+      </div>
+    </div>
+
+    <script>
+      var layout = { title: 'RPL Auction' };
+
+      var yArray = ['Hustlers', 'Stallions', 'Thunders', 'Falcons', 'Warriors', 'Panthers', ''];
+      var xArray = [0, 0, 0, 0, 0, 0, 10000];
+      var colors = [
+        'rgba(255,51,0,1)',
+        'rgba(255,153,51,1)',
+        'rgba(0,102,255,1)',
+        'rgba(0,153,0,1)',
+        'rgba(255,204,0,1)',
+        'rgba(51,51,153,1)',
+        'rgba(255,255,255,0.1)',
+      ];
+
+      var totalPrice = 5000;
+      var biddingChangeAmount = 10000;
+      var increaseLevelOne = 500;
+      var increaseLevelTwo = 1000;
+
+      var team = '';
+
+      var data = [
+        {
+          x: xArray,
+          y: yArray,
+          type: 'bar',
+          orientation: 'h',
+          marker: { color: colors },
+        },
+      ];
+
+      Plotly.newPlot('myPlot', data, layout);
+
+      function changePrice() {
+        var nameIndex = data[0].y.findIndex(checkname);
+
+        data[0].y.map((name) => {
+          if (teamName === name) {
+            if (totalPrice < biddingChangeAmount) {
+              totalPrice = totalPrice + increaseLevelOne;
+              data[0].x[nameIndex] = totalPrice;
+              Plotly.newPlot('myPlot', data, layout);
+            } else {
+              totalPrice = totalPrice + increaseLevelTwo;
+              data[0].x[nameIndex] = totalPrice;
+              Plotly.newPlot('myPlot', data, layout);
+            }
+          }
+        });
+        showTotalPrice();
+        showTeamName();
+      }
+
+      function checkname(name) {
+        return name == teamName;
+      }
+
+      function reset() {
+        data[0].x = [0, 0, 0, 0, 0, 0, 1000];
+        totalPrice = 5000;
+        Plotly.newPlot('myPlot', data, layout);
+        console.log(data[0].y);
+        var nameIndex = data[0].y.findIndex(checkname);
+        console.log(teamName + ' index is ' + nameIndex);
+      }
+
+      var teamName;
+
+      function getUser() {
+        let selectedName = formid.ddlselect[formid.ddlselect.selectedIndex].value;
+        teamName = selectedName;
+      }
+
+      function showTotalPrice() {
+        document.getElementById('totalPrice').innerHTML =
+          "Total :  <b style='color:red;'>" + totalPrice + '</b>';
+      }
+
+      function showTeamName() {
+        var teamNameIndex = data[0].x.findIndex(checkTeam);
+        team = data[0].y[teamNameIndex];
+        document.getElementById('team').innerHTML =
+          "Team :  <b style='color:red;'>" + team + '</b>';
+      }
+
+      function checkTeam(team) {
+        return team == totalPrice;
+      }
+    </script>
+  </body>
+</html>
