@@ -1,4 +1,4 @@
-<!-- For Diamond players  -->
+<!-- For Silver players  -->
 <!DOCTYPE html>
 <html>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -31,14 +31,46 @@
             onChange="getPlayer()"
           >
             <option value="">Choose a player</option>
-            <option value="Hustlers">Stany Devadason</option>
-            <option value="Stallions">Thiyagaraja Pravinnath </option>
-            <option value="Thunders">Ezra Stephen</option>
-            <option value="Falcons">Chathura Jayasena</option>
-            <option value="Warriors">Shankar Abishek</option>
-            <option value="Panthers">Joshep Jerom</option>
-            <option value="Warriors">Laven Jayaththirajieth</option>
-            <option value="Panthers">Vijayakumar Ajayshanth</option>
+            <option value="#">Mohamed Arshad</option>
+            <option value="#">Dinesh Kumar</option>
+            <option value="#">Chethiya </option>
+            <option value="#">Lahiru </option>
+            <option value="#">Fahad </option>
+            <option value="#">Athiththan</option>
+            <option value="#">Tuan</option>
+            <option value="#">Mohamed Fazith</option>
+            <option value="#">Isham Farzan</option>
+            <option value="#">Hamza </option>
+            <option value="#">Sifran</option>
+            <option value="#">Yazin</option>
+            <option value="#">sharvan</option>
+            <option value="#">Yathshan</option>
+            <option value="#">Aaqib</option>
+            <option value="#">Hadhil</option>
+            <option value="#">Rishi Kesan </option>
+            <option value="#">Nirupan</option>
+            <option value="#">Abdul Azeem</option>
+            <option value="#">Shekar Abisek</option>
+            <option value="#">Rashad Rasmin</option>
+            <option value="#">Sheen Dilushan</option>
+            <option value="#">Azeez Iqbal</option>
+            <option value="#">Harish</option>
+            <option value="#">Johan</option>
+            <option value="#">Sanjith </option>
+            <option value="#">Kowsigan</option>
+            <option value="#">Jackson </option>
+            <option value="#">Yathursan</option>
+            <option value="#">Dilon </option>
+            <option value="#">Udhaya prakash</option>
+            <option value="#">Asif</option>
+            <option value="#">Ilankumaran</option>
+            <option value="#">Anujan</option>
+            <option value="#">Pradeep </option>
+            <option value="#">Sanchey sundaraj</option>
+            <option value="#">Yathushanker </option>
+            <option value="#">Isfaar ahmed </option>
+            <option value="#">Yogarajan sanjiv </option>
+            <option value="#">Praveen </option>
           </select>
         </form>
       </div>
@@ -241,8 +273,10 @@
       "rgba(255,255,255,0.1)",
     ];
 
-    var totalPrice = 4500;
-    var biddingChangeAmount = 10000;
+    var totalPrice = 2250;
+    var biddingChangeAmountOne = 5000;
+    var biddingChangeAmountTwo = 10000;
+    var increaseLevel = 250;
     var increaseLevelOne = 500;
     var increaseLevelTwo = 1000;
 
@@ -268,7 +302,11 @@
     Plotly.newPlot("myPlot", data, layout);
 
     function hustlersBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[0] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[0] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -283,7 +321,11 @@
     }
 
     function stallionsBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[1] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[1] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -298,7 +340,11 @@
     }
 
     function thundersBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[2] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(biddingChangeAmountOne < totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[2] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -313,7 +359,11 @@
     }
 
     function falconsBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[3] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[3] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -328,7 +378,11 @@
     }
 
     function warriorsBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[4] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[4] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -343,7 +397,11 @@
     }
 
     function panthorsBid() {
-      if (totalPrice < biddingChangeAmount) {
+      if (totalPrice < biddingChangeAmountOne) {
+        totalPrice = totalPrice + increaseLevel;
+        data[0].x[5] = totalPrice;
+        Plotly.newPlot("myPlot", data, layout);
+      } else if(totalPrice < biddingChangeAmountTwo) {
         totalPrice = totalPrice + increaseLevelOne;
         data[0].x[5] = totalPrice;
         Plotly.newPlot("myPlot", data, layout);
@@ -386,6 +444,7 @@
     function showTotalPrice() {
       document.getElementById("totalPrice").innerHTML =
         "Current Bid :  <b style='color:red;'>" + totalPrice + " LKR</b>";
+        console.log(totalPrice);
     }
 
     function showTeamName() {
@@ -414,6 +473,7 @@
     }
 
     function showSold() {
+
       document.getElementById('sold')
               .style.display = "block";
 
