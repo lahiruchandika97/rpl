@@ -1,35 +1,40 @@
 <!-- For Silver players  -->
 <!DOCTYPE html>
 <html>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <header>
-    <nav class="bg-gray-300">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center gap-6">
-          <img class="block h-10 w-auto" src="images/logo.png" alt="Your Company" />
-          <img class="block h-16 w-auto" src="images/l.png" alt="Your Company" />
-          <label class="ml-64 text-2xl font-black">
-              RPL Auction 2023
-          </label>
-            <a style="color: black; text-decoration: none; display: block;" class="ml-64" href="https://lahiruchandika97.github.io/rpl/">Diamond</a>
-            <a style="color: black; text-decoration: none; display: block;" href="https://lahiruchandika97.github.io/rpl/index1.html">Gold</a>
-            <a style="color: rgb(44, 0, 148); text-decoration: none; display: block;" class="font-black" href="https://lahiruchandika97.github.io/rpl/index2.html">Silver</a>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<header>
+    <nav class="bg-gray-300 flex justify-center">
+        <div class="flex h-16 items-center gap-6 justify-between w-full px-4 max-w-7xl">
+            <div class="flex items-center min-w-0">
+                <img class="h-10 w-auto" src="images/logo.png" alt="Your Company"/>
+                <img class="h-16 w-auto" src="images/l.png" alt="Your Company"/>
+            </div>
+            <div class="text-xl md:text-2xl font-black md">
+                RPL 2023
+            </div>
+            <div class="flex items-center gap-x-4">
+                <a style="color: black; text-decoration: none; display: block;" 
+                   href="https://lahiruchandika97.github.io/rpl/">Diamond</a>
+                <a style="color: black; text-decoration: none; display: block;"
+                   href="https://lahiruchandika97.github.io/rpl/index1.html">Gold</a>
+                <a style="color: black; text-decoration: none; display: block;" class="font-black"
+                   href="https://lahiruchandika97.github.io/rpl/index2.html">Silver</a>
+            </div>
         </div>
-      </div>
     </nav>
-  </header>
-  <body>
-    <img id="sold" class="absolute bottom-40 right-20 block h-3/5 z-10 w-auto" src="images/sold.png" style="display:none;" alt="Your Company" />
-    <div class="flex flex-col items-center gap-5">
-      <div class="mt-3">
-        <form name="playerFormId">
-          <select
-            class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            id="players"
-            name="ddlselect"
-            onChange="getPlayer()"
-          >
+</header>
+<body>
+<img id="sold" class="absolute bottom-40 right-20 block h-3/5 z-10 w-auto" src="images/sold.png" style="display:none;"
+     alt="Your Company"/>
+<div class="flex justify-center gap-5 mt-3">
+    <form name="playerFormId">
+        <select
+                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                id="players"
+                name="ddlselect"
+                onChange="getPlayer()"
+        >
             <option value="">Choose a player</option>
             <option value="#">Mohamed Arshad</option>
             <option value="#">Dinesh Kumar</option>
@@ -71,206 +76,277 @@
             <option value="#">Isfaar ahmed </option>
             <option value="#">Yogarajan sanjiv </option>
             <option value="#">Praveen </option>
-          </select>
-        </form>
-      </div>
-      <div class="grid grid-cols-9 gap-3">
+        </select>
+    </form>
+</div>
 
-        <div class="col-span-1">
-          <div class="px-4 sm:px-6 lg:px-8 col-span-1">
-            <div class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-300 text-lg">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Team</th>
-                    <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Bid</th>
-                      <span class="sr-only">Edit</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200 bg-white">
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Hustlers</td>
-                    <td id="hustlers" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Stallions</td>
-                    <td id="stallions" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Thunders</td>
-                    <td id="thunders" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Falcons</td>
-                    <td id="falcons" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Warriors</td>
-                    <td id="warriors" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                  <tr>
-                    <td class="hidden px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">Panthers</td>
-                    <td id="panthers" class="hidden px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-      </div>
-      <div class="col-span-6" id="myPlot" style="width: 75%;"></div>
-
-      <div class="col-span-2 mr-20 mt-10 flex flex-col gap-10 text-xl font-black font-mono text-wrap">
-        <div>
-          <label class="" id="playerName"> </label>
-        </div>
-        <div>
-          <label class="" id="team"> </label>
-        </div>
-        <div>
-          <label class="" id="totalPrice"> </label>
-        </div>
-      </div>
-
-    </div>
-
-      <div class="flex items-center ml-5 mt-2 flex gap-3">
-        <button
-        type="button"
-        onclick="hustlersBid()"
-        style="background-color:rgba(255,51,0,1); color:honeydew"
-        class="rounded-md border border-gray-300 px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Hustlers
-      </button>
-
-      <button
-        type="button"
-        onclick="stallionsBid()"
-        style="background-color:rgba(255,153,51,1); color:honeydew"
-        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Stallions
-      </button>
-
-      <button
-        type="button"
-        onclick="thundersBid()"
-        style="background-color:rgba(0,102,255,1); color:honeydew"
-        class="rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Thunders
-      </button>
-
-      <button
-        type="button"
-        onclick="falconsBid()"
-        style="background-color:rgba(0,153,0,1); color:honeydew"
-        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Falcons
-      </button>
-
-      <button
-        type="button"
-        onclick="warriorsBid()"
-        style="background-color:rgba(255,204,0,1); color:honeydew"
-        class="rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Warriors
-      </button>
-
-      <button
-        type="button"
-        onclick="panthorsBid()"
-        style="background-color:rgba(51,51,153,1); color:honeydew"
-        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Panthors
-      </button>
-      </div>
-      <div class="flex items-center ml-5 mt-2 flex gap-3">
-        <button
-          type="button"
-          onclick="reset()"
-          class="rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          Reset
-        </button>
-
-        <button
-        type="button"
-        id="soldBtn"
-        onclick="showSold()"
-        onMouseOver="this.style.color='red'"
-        onMouseOut="this.style.color='black'"
-        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          Sold
-        </button>
-      </div>
-      <div class="text-lg">
-        <label id="team"> </label>
-        <label class="ml-3" id="totalPrice"> </label>
-      </div>
+<div class="flex gap-10 text-xl font-black font-mono text-wrap justify-center mt-4">
+    <div>
+        <label class="" id="playerName"> </label>
     </div>
     <div>
-
+        <label class="" id="team"> </label>
     </div>
+    <div>
+        <label class="" id="totalPrice"> </label>
+    </div>
+</div>
 
-    <footer class="bg-gray-300 absolute inset-x-0 bottom-0">
-      <div class="py-3 w-full">
+<div class="flex flex-col md:flex-row gap-3 w-full justify-between">
+    <div class="px-6 lg:px-8">
+        <div class="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:mx-0 md:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-300 text-lg">
+                <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col"
+                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Team
+                    </th>
+                    <th scope="col"
+                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                        Bid
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full bg-black"
+                                     src="/images/hustlers.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Hustlers</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="hustlers"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full"
+                                     src="/images/stallions.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Stallions</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="stallions"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full"
+                                     src="/images/thunders.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Thunders</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="thunders"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full"
+                                     src="/images/falcons.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Falcons</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="falcons"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full"
+                                     src="/images/warriors.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Warriors</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="warriors"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-3 py-4 text-sm text-gray-900 font-semibold lg:table-cell">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full"
+                                     src="/images/panthers.png"
+                                     alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="font-medium text-gray-900">Panthers</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="panthers"
+                        class="px-3 py-4 text-sm text-gray-900 font-semibold sm:table-cell">0
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="font-extrabold text-gray-900" id="myPlot" style="width: 100%;"></div>
+</div>
+<div class="flex flex-col mt-4 items-center justify-center">
+    <div class="flex items-center ml-5 mt-2 flex gap-3 flex-wrap">
+        <button
+                type="button"
+                onclick="hustlersBid()"
+                style="background-color:rgba(255,51,0,1); color:honeydew"
+                class="rounded-md border border-gray-300 px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Hustlers
+        </button>
+
+        <button
+                type="button"
+                onclick="stallionsBid()"
+                style="background-color:rgba(255,153,51,1); color:honeydew"
+                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Stallions
+        </button>
+
+        <button
+                type="button"
+                onclick="thundersBid()"
+                style="background-color:rgba(0,102,255,1); color:honeydew"
+                class="rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Thunders
+        </button>
+
+        <button
+                type="button"
+                onclick="falconsBid()"
+                style="background-color:rgba(0,153,0,1); color:honeydew"
+                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Falcons
+        </button>
+
+        <button
+                type="button"
+                onclick="warriorsBid()"
+                style="background-color:rgba(255,204,0,1); color:honeydew"
+                class="rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Warriors
+        </button>
+
+        <button
+                type="button"
+                onclick="panthorsBid()"
+                style="background-color:rgba(51,51,153,1); color:honeydew"
+                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Panthors
+        </button>
+    </div>
+    <div class="flex items-center ml-5 mt-2 flex gap-3 mb-8">
+        <button
+                type="button"
+                onclick="reset()"
+                class="rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Reset
+        </button>
+
+        <button
+                type="button"
+                id="soldBtn"
+                onclick="showSold()"
+                onMouseOver="this.style.color='red'"
+                onMouseOut="this.style.color='black'"
+                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-8 py-2 text-base font-black text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+            Sold
+        </button>
+    </div>
+</div>
+
+<footer class="bg-gray-300 absolute inset-x-0">
+    <div class="py-3 w-full">
         <div class="mt-10 flex justify-center space-x-10">
-          <a href="https://www.facebook.com/www.revocare.lk" class="text-black">
-            <span class="sr-only">Facebook</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                fill-rule="evenodd"
-                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
+            <a href="https://www.facebook.com/www.revocare.lk" class="text-black">
+                <span class="sr-only">Facebook</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                            fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd"
+                    />
+                </svg>
+            </a>
 
-          <a href="https://www.instagram.com/revocaresolutions/" class="text-black">
-            <span class="sr-only">Instagram</span>
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                fill-rule="evenodd"
-                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
+            <a href="https://www.instagram.com/revocaresolutions/" class="text-black">
+                <span class="sr-only">Instagram</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                            fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd"
+                    />
+                </svg>
+            </a>
         </div>
         <p class="mt-8 text-center text-xs leading-5 text-black">
-          &copy; 2023 Revocare Solutions. All rights reserved.
+            &copy; 2023 Revocare Solutions. All rights reserved.
         </p>
-      </div>
-    </footer>
-  </body>
-  <script>
+    </div>
+</footer>
+</body>
+<script>
     var layout = {};
 
     var yArray = ["Hustlers", "Stallions", "Thunders", "Falcons", "Warriors", "Panthers", ""];
     var xArray = [0, 0, 0, 0, 0, 0, 10000];
     var colors = [
-      "rgba(255,51,0,1)",
-      "rgba(255,153,51,1)",
-      "rgba(0,102,255,1)",
-      "rgba(0,153,0,1)",
-      "rgba(255,204,0,1)",
-      "rgba(51,51,153,1)",
-      "rgba(255,255,255,0.1)",
+        "rgba(255,51,0,1)",
+        "rgba(255,153,51,1)",
+        "rgba(0,102,255,1)",
+        "rgba(0,153,0,1)",
+        "rgba(255,204,0,1)",
+        "rgba(51,51,153,1)",
+        "rgba(255,255,255,0.1)",
     ];
     var borderColors = [
-      "rgb(8,48,107)",
-      "rgb(8,48,107)",
-      "rgb(8,48,107)",
-      "rgb(8,48,107)",
-      "rgb(8,48,107)",
-      "rgb(8,48,107)",
-      "rgba(255,255,255,0.1)",
+        "rgb(8,48,107)",
+        "rgb(8,48,107)",
+        "rgb(8,48,107)",
+        "rgb(8,48,107)",
+        "rgb(8,48,107)",
+        "rgb(8,48,107)",
+        "rgba(255,255,255,0.1)",
     ];
 
     var totalPrice = 2250;
@@ -283,20 +359,21 @@
     var team = "";
 
     var data = [
-      {
-        x: xArray,
-        y: yArray,
-        type: "bar",
-        orientation: "h",
-        width: [0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
-        textposition:'auto',
-        marker: { 
-          color: colors, 
-          line: {
-            color: borderColors,
-            width: 1
-          }},
-      },
+        {
+            x: xArray,
+            y: yArray,
+            type: "bar",
+            orientation: "h",
+            width: [0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
+            textposition: 'auto',
+            marker: {
+                color: colors,
+                line: {
+                    color: borderColors,
+                    width: 1
+                }
+            },
+        },
     ];
 
     Plotly.newPlot("myPlot", data, layout);
@@ -415,70 +492,67 @@
       fillTable();
     }
 
-    
 
     function checkname(name) {
-      return name == teamName;
+        return name == teamName;
     }
 
     function reset() {
-      window.location.reload();
-      // data[0].x = [0, 0, 0, 0, 0, 0, 1000];
-      // totalPrice = 5000;
-      // Plotly.newPlot('myPlot', data, layout);
-      // console.log(data[0].y);
-      // var nameIndex = data[0].y.findIndex(checkname);
-      // console.log(teamName + ' index is ' + nameIndex);
+        window.location.reload();
+        // data[0].x = [0, 0, 0, 0, 0, 0, 1000];
+        // totalPrice = 5000;
+        // Plotly.newPlot('myPlot', data, layout);
+        // console.log(data[0].y);
+        // var nameIndex = data[0].y.findIndex(checkname);
+        // console.log(teamName + ' index is ' + nameIndex);
     }
 
     var teamName;
     var playerName;
 
     function getPlayer() {
-      let selectedName = playerFormId.ddlselect[playerFormId.ddlselect.selectedIndex].text;
-      playerName = selectedName;
-      document.getElementById("playerName").innerHTML =
-        "Player :  <b style='color:red;'>" + playerName + "</b>";
+        let selectedName = playerFormId.ddlselect[playerFormId.ddlselect.selectedIndex].text;
+        playerName = selectedName;
+        document.getElementById("playerName").innerHTML =
+            "Player :  <b style='color:red;'>" + playerName + "</b>";
     }
 
     function showTotalPrice() {
-      document.getElementById("totalPrice").innerHTML =
-        "Current Bid :  <b style='color:red;'>" + totalPrice + " LKR</b>";
-        console.log(totalPrice);
+        document.getElementById("totalPrice").innerHTML =
+            "Current Bid :  <b style='color:red;'>" + totalPrice + " LKR</b>";
     }
 
     function showTeamName() {
-      var teamNameIndex = data[0].x.findIndex(checkTeam);
-      team = data[0].y[teamNameIndex];
-      document.getElementById("team").innerHTML = "Team :  <b style='color:red;'>" + team + "</b>";
+        var teamNameIndex = data[0].x.findIndex(checkTeam);
+        team = data[0].y[teamNameIndex];
+        document.getElementById("team").innerHTML = "Team :  <b style='color:red;'>" + team + "</b>";
     }
 
     function checkTeam(team) {
-      return team == totalPrice;
+        return team == totalPrice;
     }
 
-    function fillTable(){
-      document.getElementById("hustlers").innerHTML =
-        "<b style='color:red;'>" + data[0].x[0] + "</b>";
-      document.getElementById("stallions").innerHTML =
-        "<b style='color:red;'>" + data[0].x[1] + "</b>";
-      document.getElementById("thunders").innerHTML =
-        "<b style='color:red;'>" + data[0].x[2] + "</b>";
-      document.getElementById("falcons").innerHTML =
-        "<b style='color:red;'>" + data[0].x[3] + "</b>";
-      document.getElementById("warriors").innerHTML =
-        "<b style='color:red;'>" + data[0].x[4] + "</b>";
-      document.getElementById("panthers").innerHTML =
-        "<b style='color:red;'>" + data[0].x[5] + "</b>";
+    function fillTable() {
+        document.getElementById("hustlers").innerHTML =
+            "<b style='color:red;'>" + data[0].x[0] + "</b>";
+        document.getElementById("stallions").innerHTML =
+            "<b style='color:red;'>" + data[0].x[1] + "</b>";
+        document.getElementById("thunders").innerHTML =
+            "<b style='color:red;'>" + data[0].x[2] + "</b>";
+        document.getElementById("falcons").innerHTML =
+            "<b style='color:red;'>" + data[0].x[3] + "</b>";
+        document.getElementById("warriors").innerHTML =
+            "<b style='color:red;'>" + data[0].x[4] + "</b>";
+        document.getElementById("panthers").innerHTML =
+            "<b style='color:red;'>" + data[0].x[5] + "</b>";
     }
 
     function showSold() {
+        document.getElementById('sold')
+            .style.display = "block";
 
-      document.getElementById('sold')
-              .style.display = "block";
-
-      document.getElementById('soldBtn')
-              .style.display = "none";
+        document.getElementById('soldBtn')
+            .style.display = "none";
     }
-  </script>
+</script>
 </html>
